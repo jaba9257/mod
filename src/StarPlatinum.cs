@@ -8,13 +8,12 @@ namespace DuckGame.Magic_Wand
 {
     internal class StarPlatinum : Stand
     {
-        bool isstarfe = false;
         private SpriteMap sprite;
         private float direct = 0;
         public StarPlatinum(float xpos, float ypos, float dir) : base(xpos, ypos)
         {
             this.sprite = new SpriteMap(GetPath("SPTW_punch"), 32, 32);
-            this.sprite.AddAnimation("SPTW_punch", 0.33f, true, new int[] { 0, 1, 2, 3, 4 });
+            this.sprite.AddAnimation("SPTW_punch", 0.5f, true, new int[] { 0, 1, 2, 3, 4 });
             this.sprite.SetAnimation("SPTW_punch");
             base.graphic = this.sprite;
             direct = dir;
@@ -53,39 +52,18 @@ namespace DuckGame.Magic_Wand
                 minn = -29f;
                 pluss = 0f;
             }
-            foreach (Thing obj in Level.CheckRectAll<Thing>(new Vec2(x + minn, y), new Vec2(x + pluss, y + 10f)))
+            foreach (Thing obj in Level.CheckRectAll<Thing>(new Vec2(x + minn, y), new Vec2(x + pluss, y + 20f)))
             {
                 if(obj == this) {continue;}
                 this.Hit(obj);
             }
-            /*foreach (Duck duck in Level.CheckCircleAll<Duck>(this.position, 25f))
-            {
-                if (this.own == duck)
-                {
-                    continue;
-                }
-                duck.GoRagdoll();
-                duck._destroyed = true;
-            }*/
 
-            if(own.inputProfile.Pressed("STRAFE"))
-            {
-                isstarfe = true;
-            }
-
-            if(own.inputProfile.Released("STRAFE"))
-            {
-                isstarfe = false;
-            }
-
-            if (!isstarfe && !own.moveLock && own.inputProfile.Pressed("RIGHT"))
+            if(own.offDir > 0)
             {
                 this.sprite.flipH = false;
                 direct = 1f;
-               
             }
-
-            if (!isstarfe && !own.moveLock && own.inputProfile.Pressed("LEFT"))
+            else if(own.offDir < 0)
             {
                 this.sprite.flipH = true;
                 direct = -1f;

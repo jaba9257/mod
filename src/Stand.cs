@@ -50,16 +50,27 @@ namespace DuckGame.Magic_Wand
             }
             if(obj is Duck && ((Duck)obj) != this.own)
             {
-                ((Duck)obj)._destroyed = true;
+                //((Duck)obj)._destroyed = true;
                 if (this.x <= obj.x)
                 {
-                    obj.ApplyForce(new Vec2(100f, 0f));
+                    obj.ApplyForce(new Vec2(1f, -0.7f));
                 }
                 else
                 {
-                    obj.ApplyForce(new Vec2(-100f, 0f));
+                    obj.ApplyForce(new Vec2(-1f, -0.7f));
                 }
                 ((Duck)obj).GoRagdoll();
+            }
+            if(obj is RagdollPart)
+            {
+                if (this.x <= obj.x)
+                {
+                    obj.ApplyForce(new Vec2(1f, -0.7f));
+                }
+                else
+                {
+                    obj.ApplyForce(new Vec2(-1f, -0.7f));
+                }
             }
         }
 
