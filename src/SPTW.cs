@@ -195,7 +195,6 @@ namespace DuckGame.Magic_Wand
                 }
                 return;
             }
-            LastEquipped = equippedDuck;
             if (!equippedDuck.moveLock && cooldown < 0 && equippedDuck.inputProfile.Pressed("QUACK"))
             {
                 Layer.Blocks.colorMul = new Vec3(0.8f, 0f, 1f);

@@ -8,6 +8,7 @@ namespace DuckGame.Magic_Wand
 {
     internal class StarPlatinum : Stand
     {
+        bool isstarfe = false;
         private SpriteMap sprite;
         private float direct = 0;
         public StarPlatinum(float xpos, float ypos, float dir) : base(xpos, ypos)
@@ -23,17 +24,36 @@ namespace DuckGame.Magic_Wand
 
             }
             base.collisionCenter = this.position;
-            base.collisionSize = new Vec2(32f, 20f);
+            base.collisionSize = new Vec2(30f, 20f);
         }
 
         public override void Update()
         {
             if (this.own == null)
             {
+                Level.Remove(this);
                 base.Update();
                 return;
             }
-            foreach (Thing obj in Level.CheckRectAll<Thing>(new Vec2(x - 30f, y - 10f), new Vec2(x + 30f, y + 10f)))
+            if(lifetime == 0)
+            {
+                Level.Remove(this);
+                base.Update();
+
+                return;
+            }
+            float minn = 0f, pluss = 0f;
+            if(direct == 1f)
+            {
+                minn = -0f;
+                pluss = 29f;
+            }
+            else if (direct == -1f)
+            {
+                minn = -29f;
+                pluss = 0f;
+            }
+            foreach (Thing obj in Level.CheckRectAll<Thing>(new Vec2(x + minn, y), new Vec2(x + pluss, y + 10f)))
             {
                 if(obj == this) {continue;}
                 this.Hit(obj);
@@ -47,17 +67,32 @@ namespace DuckGame.Magic_Wand
                 duck.GoRagdoll();
                 duck._destroyed = true;
             }*/
-            if (!own.moveLock && own.inputProfile.Pressed("RIGHT"))
+
+            if(own.inputProfile.Pressed("STRAFE"))
+            {
+                isstarfe = true;
+            }
+
+            if(own.inputProfile.Released("STRAFE"))
+            {
+                isstarfe = false;
+            }
+
+            if (!isstarfe && !own.moveLock && own.inputProfile.Pressed("RIGHT"))
             {
                 this.sprite.flipH = false;
                 direct = 1f;
                
             }
 
-            if (!own.moveLock && own.inputProfile.Pressed("LEFT"))
+            if (!isstarfe && !own.moveLock && own.inputProfile.Pressed("LEFT"))
             {
                 this.sprite.flipH = true;
                 direct = -1f;
+            }
+
+            if(direct == -1f)
+            {
                 this.collisionOffset = new Vec2(-30f, 0);
             }
             this.x = this.own.x + 12 * direct;
