@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DuckGame">
-      <HintPath>D:\Games\steam\steamapps\common\Duck Game\DuckGame.exe</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Duck Game\DuckGame.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,10 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\QuackUtility.cs" />
+    <Compile Include="src\SexPistolsRevolver.cs" />
     <Compile Include="src\Mod.cs" />
+    <Compile Include="src\SexPistolsHat.cs" />
     <Compile Include="src\SPTW.cs" />
     <Compile Include="src\Stand.cs" />
     <Compile Include="src\StarPlatinum.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
