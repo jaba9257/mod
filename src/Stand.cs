@@ -103,11 +103,11 @@ namespace DuckGame.Magic_Wand
                 {
                     if(this.x < enemy.x)
                     {
-                        own.ApplyForce(new Vec2(-100f, 0f));
+                        own.ApplyForce(new Vec2(-4f, 0f));
                     }
                     else
                     {
-                        own.ApplyForce(new Vec2(100f, 0f));
+                        own.ApplyForce(new Vec2(4f, 0f));
                     }
                     fightpoints = 0;
                     own.GoRagdoll();
