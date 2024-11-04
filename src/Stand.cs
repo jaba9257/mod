@@ -32,7 +32,6 @@ namespace DuckGame.Magic_Wand
             }
             if(obj is Stand && !startfight && cantfight < 0)
             {
-                
                 startfight = true;
                 framesforbattle = 300;
                 own.moveLock = true;

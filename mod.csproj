@@ -46,9 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\Class1.cs" />
-    <Compile Include="src\Class2.cs" />
+    <Compile Include="src\QuackUtility.cs" />
+    <Compile Include="src\SexPistolsRevolver.cs" />
     <Compile Include="src\Mod.cs" />
+    <Compile Include="src\SexPistolsHat.cs" />
     <Compile Include="src\SPTW.cs" />
     <Compile Include="src\Stand.cs" />
     <Compile Include="src\StarPlatinum.cs" />
