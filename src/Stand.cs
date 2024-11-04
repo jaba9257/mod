@@ -48,9 +48,9 @@ namespace DuckGame.Magic_Wand
             {
                 
             }
+            Duck duck = null;
             if(obj is Duck && ((Duck)obj) != this.own)
             {
-                //((Duck)obj)._destroyed = true;
                 if (this.x <= obj.x)
                 {
                     obj.ApplyForce(new Vec2(1f, -0.7f));
@@ -59,6 +59,7 @@ namespace DuckGame.Magic_Wand
                 {
                     obj.ApplyForce(new Vec2(-1f, -0.7f));
                 }
+                duck = (Duck)obj;
                 ((Duck)obj).GoRagdoll();
             }
             if(obj is RagdollPart)
@@ -71,6 +72,11 @@ namespace DuckGame.Magic_Wand
                 {
                     obj.ApplyForce(new Vec2(-1f, -0.7f));
                 }
+                duck = ((RagdollPart)obj).duck;
+            }
+            if (duck != null)
+            {
+                QuackUtility.DoQuack(ref duck);
             }
         }
 
