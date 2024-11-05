@@ -17,8 +17,8 @@ namespace DuckGame.Magic_Wand
         public SexPistolsHat(float xpos, float ypos) : base(xpos, ypos)
         {
             _editorName = "Sex Pistols";
-            graphic = pickupSprite = new Sprite(GetPath("jotaro2"));
-            sprite = new SpriteMap("jotaro3", 32, 32);
+            graphic = pickupSprite = new Sprite(GetPath("mista"));
+            _sprite = new SpriteMap(GetPath("mista_sex_pistols"), 32, 32);
         }
         
         public override void Update()

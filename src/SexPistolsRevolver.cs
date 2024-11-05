@@ -195,7 +195,7 @@ namespace DuckGame.Magic_Wand
             if (this.offDir > (sbyte)0)
                 this.angle -= this._angleOffset;
             else
-                this.angle += this._angleOffset;
+                this.angle -= this._angleOffset;
             base.Draw();
             this.angle = angle;
         }

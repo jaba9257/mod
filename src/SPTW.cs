@@ -162,6 +162,7 @@ namespace DuckGame.Magic_Wand
                 first = true;
                 return;
             }
+            LastEquipped = equippedDuck;
             if (equippedDuck == null)
             {
                 if (us != null)
@@ -169,7 +170,6 @@ namespace DuckGame.Magic_Wand
                     us.own = null;
                     Level.Remove(us);
                 }
-                first = true;
                 ts_timer = 0;
                 if (ts_timer <= 0 && unfreez)
                 {
@@ -232,6 +232,7 @@ namespace DuckGame.Magic_Wand
             if (ts_timer > 0)
             {
                 freeztime(this, ref recover, ref recbul);
+                unfreez = true;
             }
             else if (ts_timer <= 0 && unfreez)
             {
