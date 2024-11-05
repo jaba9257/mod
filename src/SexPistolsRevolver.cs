@@ -26,6 +26,7 @@ namespace DuckGame.Magic_Wand
         {
             _manualLoad = true;
             _ammoType = new ATMagnum();
+            ammoType.bulletSpeed = 16f;
             _type = "gun";
             graphic = new Sprite("magnum");
             center = new Vec2(16, 16);

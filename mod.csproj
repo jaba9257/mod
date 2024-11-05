@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DuckGame">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Duck Game\DuckGame.exe</HintPath>
+      <HintPath>D:\Games\steam\steamapps\common\Duck Game\DuckGame.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\Basic_geometry.cs" />
     <Compile Include="src\QuackUtility.cs" />
     <Compile Include="src\SexPistolsRevolver.cs" />
     <Compile Include="src\Mod.cs" />
