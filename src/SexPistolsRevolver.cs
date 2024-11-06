@@ -41,12 +41,12 @@ namespace DuckGame.Magic_Wand
             _ammoType = new ATMagnum();
             ammoType.bulletSpeed = 16f;
             _type = "gun";
-            graphic = new Sprite("magnum");
+            graphic = new Sprite(GetPath("sex-pistols-revolver"), 32, 32);
             center = new Vec2(16, 16);
             collisionOffset = new Vec2(-8f, -6f);
             collisionSize = new Vec2(16f, 10f);
             _barrelOffsetTL = new Vec2(25f, 12f);
-            _fireSound = "magnum";
+            _fireSound = GetPath("Sounds/sex-pistols-revolver");
             _kickForce = 3f;
             _fireWait = 1.7f;
             _fireRumble = RumbleIntensity.Light;
@@ -127,10 +127,10 @@ namespace DuckGame.Magic_Wand
                 {
                     if (!this.isServerForObject)
                         return;
-                    NetSoundEffect.Play("oldPistolLoad");
+                    NetSoundEffect.Play(GetPath("Sounds/sex-pistols-revolver-reload"));
                 }
                 else
-                    SFX.Play("shotgunLoad");
+                    SFX.Play(GetPath("Sounds/sex-pistols-revolver-reload"));
             }
             else if (_loadState == LoadState.START_SWIPING_DOWN)
             {
@@ -182,9 +182,9 @@ namespace DuckGame.Magic_Wand
                 if (loaded && ammo > 0)
                 {
                     base.OnPressAction();
-                    if (rise < 1.0)
+                    if (rise < 1)
                     {
-                        rise += 0.25f;
+                        rise += 0.2f;
                     }
                     if (!loaded)
                     {
@@ -207,13 +207,7 @@ namespace DuckGame.Magic_Wand
 
         public override void Draw()
         {
-            float angle = this.angle;
-            /*if (this.offDir > (sbyte)0)
-                this.angle -= this._angleOffset;
-            else
-                this.angle -= this._angleOffset;*/
             base.Draw();
-            this.angle = angle;
         }
     }
 }

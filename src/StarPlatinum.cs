@@ -12,7 +12,7 @@ namespace DuckGame.Magic_Wand
         private float direct = 0;
         public StarPlatinum(float xpos, float ypos, float dir) : base(xpos, ypos)
         {
-            this.sprite = new SpriteMap(GetPath("SPTW_punch"), 32, 32);
+            this.sprite = new SpriteMap(GetPath("SPTW_punch2"), 32, 32);
             this.sprite.AddAnimation("SPTW_punch", 0.5f, true, new int[] { 0, 1, 2, 3, 4 });
             this.sprite.SetAnimation("SPTW_punch");
             base.graphic = this.sprite;
