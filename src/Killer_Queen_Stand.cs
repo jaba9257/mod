@@ -13,9 +13,9 @@ namespace DuckGame.Magic_Wand
         float direct = 1f;
         public Killer_Queen_Stand(float xval, float yval, float dir) : base(xval, yval)
         {
-            this.sprite = new SpriteMap(GetPath("SPTW_punch"), 32, 32);
-            this.sprite.AddAnimation("SPTW_punch", 0.5f, true, new int[] { 0, 1, 2, 3, 4 });
-            this.sprite.SetAnimation("SPTW_punch");
+            this.sprite = new SpriteMap(GetPath("yoshikage2"), 32, 32);
+            this.sprite.AddAnimation("yoshikage2", 0.5f, true, new int[] { 0, 1, 2, 3, 4 });
+            this.sprite.SetAnimation("yoshikage2");
             base.graphic = this.sprite;
             direct = dir;
             if (dir == -1f)
