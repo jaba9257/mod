@@ -22,6 +22,22 @@ namespace DuckGame.Magic_Wand
             }
             else
             {
+                if(connectedto is RagdollPart)
+                {
+                    connectedto = (connectedto as RagdollPart)._doll;
+                }
+                if(connectedto is Ragdoll)
+                {
+                    (connectedto as Ragdoll)._duck.dead = true;
+                    if((connectedto as Ragdoll)._duck.ragdoll == null)
+                    {
+                        (connectedto as Ragdoll)._duck.GoRagdoll();
+                    }
+                    connectedto = (connectedto as Ragdoll)._duck.ragdoll;
+                    this.position = connectedto.position;
+                    //this.position = (connectedto as Ragdoll)._duck.position;
+                    
+                }
                 Level.Remove(connectedto);
                 Level.Add(new GrenadeExplosion(this.x, this.y));
                 Level.Remove(this);
