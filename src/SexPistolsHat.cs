@@ -131,12 +131,12 @@ namespace DuckGame.Magic_Wand
                 Level.Add(revolver);
                 equippedDuck.GiveHoldable(revolver);
             }
-            if(redirect_cooldown < 0 && this.owner != null)
+            if(redirect_cooldown < 0 && this.owner != null && (owner as Duck).inputProfile.Pressed("QUACK"))
             {
                 bool wasredirected = RedirectBullet(this);
                 if(wasredirected)
                 {
-                    redirect_cooldown = 60;
+                    redirect_cooldown = 600;
                 }
             }
         }
