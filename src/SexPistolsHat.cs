@@ -23,6 +23,26 @@ namespace DuckGame.Magic_Wand
             _sprite = new SpriteMap(GetPath("mista_sex_pistols"), 32, 32);
         }
 
+        public bool Check(Vec2 a, Vec2 b)
+        {
+            bool is_all_good = true;
+            foreach (MaterialThing obj in Level.CheckLineAll<MaterialThing>(a, b))
+            {
+                if (obj is Duck && ((Duck)obj) == this.owner)
+                {
+                    is_all_good = false;
+                    break;
+                }
+                if (obj.thickness <= 2f)
+                {
+                    continue;
+                }
+                is_all_good = false;
+                break;
+            }
+            return is_all_good;
+        }
+
         public bool RedirectBullet(SexPistolsHat u)
         {
             bool redirect = false;
@@ -36,7 +56,7 @@ namespace DuckGame.Magic_Wand
                 if (bul.owner == u.owner && !redirect)
                 {
                     Vec2 pos = Basic_geometry.GetPoint(bul.start, bul._angle, bul.travelTime);
-                    if(Basic_geometry.Dist(bul.start, pos) >= Basic_geometry.Dist(bul.travelStart, bul.travelEnd))
+                    if(Basic_geometry.Dist(bul.travelStart, pos) >= Basic_geometry.Dist(bul.travelStart, bul.travelEnd) || !Check(pos, bul.travelStart))
                     {
                         continue;
                     }
