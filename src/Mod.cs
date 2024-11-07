@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: AssemblyDescription("")]
 
 // The mod's version
-[assembly: AssemblyVersion("1.1.3")]
+[assembly: AssemblyVersion("1.1.4")]
 
 namespace DuckGame.Magic_Wand
 {

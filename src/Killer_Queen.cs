@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace DuckGame.Magic_Wand
 {
@@ -50,8 +51,12 @@ namespace DuckGame.Magic_Wand
             if (cooldown < 0 && equippedDuck.inputProfile.Pressed("QUACK") && plantedBomb == null)
             {
                 Duck duck = equippedDuck;
-                if(duck.holdObject != null && plantedBomb == null && !(holdObject is TrappedDuck))
+                if(duck.holdObject != null && plantedBomb == null && !(duck.holdObject is TrappedDuck))
                 {
+                    /*if(duck.holdObject.GetType() != null)
+                    {
+                        File.WriteAllText(@"C:\Users\kv-2-\OneDrive\Документы\DuckGame\Mods\Magic_Wand\content\output.txt", duck.holdObject.GetType().ToString());
+                    }*/
                     plantedBomb = new Killer_Queen_Bomb(duck.holdObject.x, duck.holdObject.y);
                     plantedBomb.connectedto = duck.holdObject;
                     Level.Add(plantedBomb);
