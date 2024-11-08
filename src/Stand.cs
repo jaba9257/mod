@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,6 +31,18 @@ namespace DuckGame.Magic_Wand
             {
                 return;
             }
+            if(obj is TrappedDuck)
+            {
+                if (this.x <= obj.x)
+                {
+                    obj.ApplyForce(new Vec2(1f, -0.7f));
+                }
+                else
+                {
+                    obj.ApplyForce(new Vec2(-1f, -0.7f));
+                }
+                return;
+            }
             if(obj is Stand && !startfight && cantfight < 0)
             {
                 startfight = true;
@@ -48,7 +61,7 @@ namespace DuckGame.Magic_Wand
                 
             }
             Duck duck = null;
-            if(obj is Duck && ((Duck)obj) != this.own)
+            if(obj is Duck && ((Duck)obj) != this.own && (obj as Duck)._trapped == null)
             {
                 if (this.x <= obj.x)
                 {
@@ -61,7 +74,7 @@ namespace DuckGame.Magic_Wand
                 duck = (Duck)obj;
                 ((Duck)obj).GoRagdoll();
             }
-            if(obj is RagdollPart)
+            if(obj is RagdollPart && (obj as RagdollPart).duck._trapped == null)
             {
                 if (this.x <= obj.x)
                 {
